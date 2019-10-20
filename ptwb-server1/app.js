@@ -52,7 +52,7 @@ app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.locals.title = 'Express - Generated with IronGenerator';
 
 
-
+//routes
 const index = require('./routes/index');
 app.use('/', index);
 
