@@ -25,7 +25,7 @@ export default class Login extends React.Component {
 
         axios.post(
             // route we are hitting in the backend
-            "http://localhost:3001/api/login",
+            "http://localhost:3000/api/login",
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
