@@ -20,3 +20,11 @@
 .App-link {
   color: #09d3ac;
 }
+
+/* ADDED */
+.dropzone {
+  background: #eee;
+  padding: 130px;
+  margin: 0 auto;
+  width: 800px;
+}

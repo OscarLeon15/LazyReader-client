@@ -41,7 +41,10 @@ class App extends React.Component {
     // console.log("the state in APPJS: ", this.state);
     return (
       <div >
-        <Drop />
+        <div className="dropzone">
+
+          <Drop />
+        </div>
         {/* <FileUpload /> */}
         <header>
           <nav>
