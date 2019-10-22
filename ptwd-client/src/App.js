@@ -1,42 +1,47 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Signup from "./components/user-pages/Signup";
 import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
+// import FileUpload from './components/FileUpload'
+import Dropzone from 'react-dropzone'
+import Drop from "./components/Drop"
+
 
 
 class App extends React.Component {
 
-  constructor(){
+  constructor() {
     super();
     this.state = {
       currentUser: null
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
-    .then( responseFromTheBackend => {
-      // console.log("User in APP.JS: ", responseFromTheBackend)
-      const { userDoc } = responseFromTheBackend.data;
-      this.syncCurrentUSer(userDoc);
-    } )
-    .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
+      .then(responseFromTheBackend => {
+        // console.log("User in APP.JS: ", responseFromTheBackend)
+        const { userDoc } = responseFromTheBackend.data;
+        this.syncCurrentUSer(userDoc);
+      })
+      .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
   }
 
-  syncCurrentUSer(user){
+  syncCurrentUSer(user) {
     this.setState({ currentUser: user })
   }
 
 
 
-  render (){   
+  render() {
     // console.log("the state in APPJS: ", this.state);
     return (
       <div >
+        <Drop />
+        {/* <FileUpload /> */}
         <header>
           <nav>
             <NavLink to="/" > Home </NavLink>
@@ -45,25 +50,25 @@ class App extends React.Component {
           </nav>
         </header>
         <Switch>
-        {/* this is example how we would render component normally */}
-        {/* <Route exact path="/somePage" component={ someComponentThatWillRenderWhenThisRouteIsHit }   /> */}
-          <Route exact path="/" component={ Home }   /> 
-          <Route exact path="/countries" component={ CountriesList }   /> 
+          {/* this is example how we would render component normally */}
+          {/* <Route exact path="/somePage" component={ someComponentThatWillRenderWhenThisRouteIsHit }   /> */}
+          <Route exact path="/" component={Home} />
+          <Route exact path="/countries" component={CountriesList} />
 
           {/* if we have to pass some props down to a component,
           we can't use a standard way of rendering using component={},
           but instead we have to use render = {}  like in the example below */}
-          <Route exact path="/signup-page" render = { () => 
-            <Signup 
-              currentUser = { this.state.currentUser }   
-              onUserChange = { userDoc => this.syncCurrentUSer(userDoc) }   
-            /> 
-          }/>
+          <Route exact path="/signup-page" render={() =>
+            <Signup
+              currentUser={this.state.currentUser}
+              onUserChange={userDoc => this.syncCurrentUSer(userDoc)}
+            />
+          } />
 
           {/* Login component goes here */}
 
         </Switch>
-          {/* <CountriesList /> */}
+        {/* <CountriesList /> */}
       </div>
     );
   }
