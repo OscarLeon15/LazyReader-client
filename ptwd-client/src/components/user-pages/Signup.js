@@ -25,7 +25,7 @@ export default class Signup extends React.Component {
 
         axios.post(
             // route we are hitting in the backend
-            "http://localhost:3001/api/signup",
+            "http://localhost:3000/api/signup",
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
@@ -61,7 +61,7 @@ export default class Signup extends React.Component {
                         onChange = { event => this.genericSync(event) } 
                         type="text"
                         name="fullName"
-                        placeholder="Jesus"
+                        placeholder="yo"
                     />
 
                      <label> Email: </label>

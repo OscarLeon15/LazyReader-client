@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Dropzone from 'react-dropzone'
 import Drop from "./components/Drop"
 
+import Login from './components/user-pages/Login';
 
 
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
           <nav>
             <NavLink to="/" > Home </NavLink>
             <NavLink to="/signup-page"> Signup </NavLink>
+            <NavLink to="/login-page"> login </NavLink>
             <NavLink to="/countries" > Countries </NavLink>
           </nav>
         </header>
@@ -66,7 +68,7 @@ class App extends React.Component {
           } />
 
           {/* Login component goes here */}
-
+          <Route exact path="/login-page" component={Login} />
         </Switch>
         {/* <CountriesList /> */}
       </div>
