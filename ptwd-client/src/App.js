@@ -24,7 +24,7 @@ class App extends React.Component {
       // console.log("User in APP.JS: ", responseFromTheBackend)
       const { userDoc } = responseFromTheBackend.data;
       this.syncCurrentUSer(userDoc);
-    } )
+    })
     .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
   }
 
@@ -42,6 +42,7 @@ class App extends React.Component {
           <nav>
             <NavLink to="/" > Home </NavLink>
             <NavLink to="/signup-page"> Signup </NavLink>
+            <NavLink to="/login-page"> login </NavLink>
             <NavLink to="/countries" > Countries </NavLink>
           </nav>
         </header>
@@ -62,7 +63,7 @@ class App extends React.Component {
           }/>
 
           {/* Login component goes here */}
-          {/* <Route exact path="/login-page" /> */}
+          <Route exact path="/login-page" component={Login} />
         </Switch>
           {/* <CountriesList /> */}
       </div>
