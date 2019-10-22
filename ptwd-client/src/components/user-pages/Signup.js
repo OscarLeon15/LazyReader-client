@@ -61,7 +61,7 @@ export default class Signup extends React.Component {
                         onChange = { event => this.genericSync(event) } 
                         type="text"
                         name="fullName"
-                        placeholder="Jesus"
+                        placeholder="yo"
                     />
 
                      <label> Email: </label>

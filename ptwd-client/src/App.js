@@ -6,6 +6,7 @@ import { Switch, Route, NavLink } from "react-router-dom";
 import Signup from "./components/user-pages/Signup";
 import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
+import Login from './components/user-pages/Login';
 
 
 class App extends React.Component {
@@ -61,7 +62,7 @@ class App extends React.Component {
           }/>
 
           {/* Login component goes here */}
-
+          {/* <Route exact path="/login-page" /> */}
         </Switch>
           {/* <CountriesList /> */}
       </div>
