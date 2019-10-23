@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
 
 export default class Drop extends React.Component {
 

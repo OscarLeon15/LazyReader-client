@@ -67,7 +67,7 @@ class App extends React.Component {
             />
           } />
 
-          {/* Login component goes here */}
+          {/* Login component */}
           <Route exact path="/login-page" component={Login} />
         </Switch>
         {/* <CountriesList /> */}
