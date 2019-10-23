@@ -3,6 +3,22 @@ import Dropzone from 'react-dropzone'
 
 export default class Drop extends React.Component {
 
+  constructor() {
+    super()
+    this.state = {
+      image: String
+    }
+  }
+
+  seePreview = (e) => {
+    e.preventDefault();
+    console.log(e.target.files[0]);
+
+    this.setState({
+      img: URL.createObjectURL(e.target.files[0])
+    })
+  }
+
   onDrop = (acceptedFiles) => {
     console.log(acceptedFiles);
   }
@@ -10,10 +26,13 @@ export default class Drop extends React.Component {
   render() {
     const maxSize = 1048576;
     return (
-      <div className="text-center mt-5">
+      <div className="text-center mt-5 dropzone">
         <Dropzone
           onDrop={this.onDrop}
-          accept="image/png"
+          accept="image/png, 
+                  image/jpg, 
+                  image/gif, 
+                  application/pdf"
           minSize={0}
           maxSize={maxSize}
         >
@@ -21,7 +40,7 @@ export default class Drop extends React.Component {
             const isFileTooLarge = rejectedFiles.length > 0 && rejectedFiles[0].size > maxSize;
             return (
               <div {...getRootProps()}>
-                <input {...getInputProps()} />
+                <input {...getInputProps()} onChange={this.seePreview} />
                 {!isDragActive && 'Click here or drop a file to upload!'}
                 {isDragActive && !isDragReject && "Drop it like it's hot!"}
                 {isDragReject && "File type not accepted, sorry!"}
@@ -35,6 +54,8 @@ export default class Drop extends React.Component {
           }
           }
         </Dropzone>
+
+        <p>Acceptable file types: png, jpg, gif, & pdf.</p>
       </div>
     );
   }

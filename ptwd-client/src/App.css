@@ -27,4 +27,11 @@
   padding: 130px;
   margin: 0 auto;
   width: 800px;
+  font-size: 22px;
+  color: white;
+}
+
+.dropzone>div {
+  background: gray;
+  min-height: 300px;
 }

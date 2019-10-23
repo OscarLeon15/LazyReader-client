@@ -6,7 +6,7 @@ import Signup from "./components/user-pages/Signup";
 import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
 // import FileUpload from './components/FileUpload'
-import Dropzone from 'react-dropzone'
+// import Dropzone from 'react-dropzone'
 import Drop from "./components/Drop"
 
 import Login from './components/user-pages/Login';
@@ -41,10 +41,7 @@ class App extends React.Component {
     // console.log("the state in APPJS: ", this.state);
     return (
       <div >
-        <div className="dropzone">
 
-          <Drop />
-        </div>
         {/* <FileUpload /> */}
         <header>
           <nav>
@@ -74,7 +71,10 @@ class App extends React.Component {
           <Route exact path="/login-page" component={Login} />
         </Switch>
         {/* <CountriesList /> */}
+        <Drop />
       </div>
+
+
     );
   }
 }
