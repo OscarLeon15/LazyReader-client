@@ -49,6 +49,14 @@ export default class Login extends React.Component {
                 <h2> Login </h2>
                 <form onSubmit={event => this.handleSubmit(event)} >
 
+                    <label> fullName: </label>
+                    <input
+                        value={fullName} // this.state.email
+                        onChange={event => this.genericSync(event)}
+                        type='text'
+                        name='fullName'
+                        placeholder='paco peco'
+                    />
                     <label> Email: </label>
                     <input
                         value={email} // this.state.email
