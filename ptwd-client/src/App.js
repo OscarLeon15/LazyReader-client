@@ -3,13 +3,14 @@ import './App.css';
 import axios from "axios";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Signup from "./components/user-pages/Signup";
-import CountriesList from "./components/CountriesList";
+// import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
 // import FileUpload from './components/FileUpload'
-// import Dropzone from 'react-dropzone'
-import Drop from "./components/Drop"
+
+// import Drop from "./components/Drop"
 
 import Login from './components/user-pages/Login';
+import MyUploader from "./components/MyUploader"
 
 
 class App extends React.Component {
@@ -22,9 +23,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+
+    console.log(process.env.REACT_APP_OCR)
     axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
       .then(responseFromTheBackend => {
-        // console.log("User in APP.JS: ", responseFromTheBackend)
+        console.log("User in APP.JS: ", responseFromTheBackend)
         const { userDoc } = responseFromTheBackend.data;
         this.syncCurrentUSer(userDoc);
       })
@@ -41,6 +44,7 @@ class App extends React.Component {
     // console.log("the state in APPJS: ", this.state);
     return (
       <div >
+        <MyUploader />
 
         {/* <FileUpload /> */}
         <header>
@@ -55,7 +59,7 @@ class App extends React.Component {
           {/* this is example how we would render component normally */}
           {/* <Route exact path="/somePage" component={ someComponentThatWillRenderWhenThisRouteIsHit }   /> */}
           <Route exact path="/" component={Home} />
-          <Route exact path="/countries" component={CountriesList} />
+          {/* <Route exact path="/countries" component={CountriesList} /> */}
 
           {/* if we have to pass some props down to a component,
           we can't use a standard way of rendering using component={},
@@ -67,11 +71,12 @@ class App extends React.Component {
             />
           } />
 
-          {/* Login component goes here */}
+          {/* Login component */}
           <Route exact path="/login-page" component={Login} />
         </Switch>
         {/* <CountriesList /> */}
-        <Drop />
+        {/* <Drop /> */}
+        {/* <Uploader /> */}
       </div>
 
 

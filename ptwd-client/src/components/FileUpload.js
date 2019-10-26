@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from "axios"
 
 class FileUpload extends React.Component {
 
@@ -6,9 +7,6 @@ class FileUpload extends React.Component {
     super(props);
 
     this.state = {
-      username: String,
-      email: String,
-      password: String,
       image: String
     }
   }
@@ -24,34 +22,47 @@ class FileUpload extends React.Component {
     console.log(e.target.files[0]);
 
     this.setState({
-      img: URL.createObjectURL(e.target.files[0])
+      img: URL.createObjectURL(e.target.files[0]),
+      imgFile: e.target.files[0]
+
     })
   }
 
-  makeNewUser = (e) => {
+
+
+  callOCR = (e) => {
     e.preventDefault();
+    // alert(this.state.img)
+
+    // let sanatizeURL = this.state.img.subtr(5)
+
+    axios.post(`https://api.ocr.space/parse/imageurl?apikey=${process.env.REACT_APP_OCR}&url=https://i.ytimg.com/vi/anVweXDcxhA/maxresdefault.jpg`, { withCredentials: true })
+      .then(responseFromTheBackend => {
+        console.log("User in APP.JS: ", responseFromTheBackend)
+        const { userDoc } = responseFromTheBackend.data;
+        this.syncCurrentUSer(userDoc);
+      })
+      .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
 
   }
 
   render() {
+
     console.log(this.state.img);
-    const { username, email, password, image } = this.state
+
+    const { image } = this.state
     return (
-      <section>
+      <h2>
         <h2>Sign Up</h2>
-        <form onSubmit={this.makeNewUser}>
-          <label>Username: </label>
-          <input type="text" name="username" value={username} onChange={this.updateValue}></input>
-          <label>Email: </label>
-          <input type="email" name="email" value={email} onChange={this.updateValue}></input>
-          <label>Password </label>
-          <input type="text" name="password" value={password} onChange={this.updateValueField}></input>
+        <form onSubmit={this.callOCR}>
+
           <label>Image </label>
           <input type="file" name="image" value={image} onChange={this.seePreview}></input>
           <img src={this.state.img} alt="Choose a file"></img>
           <button>Submit</button>
+
         </form>
-      </section>
+      </h2>
     )
   }
 

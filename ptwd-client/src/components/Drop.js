@@ -1,5 +1,5 @@
 import React from 'react';
-import Dropzone from 'react-dropzone'
+import Dropzone from 'react-dropzone';
 
 export default class Drop extends React.Component {
 
@@ -13,6 +13,7 @@ export default class Drop extends React.Component {
   seePreview = (e) => {
     e.preventDefault();
     console.log(e.target.files[0]);
+ 
 
     this.setState({
       img: URL.createObjectURL(e.target.files[0])
@@ -25,6 +26,8 @@ export default class Drop extends React.Component {
 
   render() {
     const maxSize = 1048576;
+    console.log(this.state.img);
+    const { image } = this.state
     return (
       <div className="text-center mt-5 dropzone">
         <Dropzone
@@ -49,6 +52,8 @@ export default class Drop extends React.Component {
                     File is too large.
                 </div>
                 )}
+                <br/>
+                <img src={this.state.img} alt="Choose a file"></img>
               </div>
             )
           }
