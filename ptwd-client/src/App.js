@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import axios from "axios";
+// import axios from "axios";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Signup from "./components/user-pages/Signup";
 // import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
 // import FileUpload from './components/FileUpload'
-
 // import Drop from "./components/Drop"
-
 import Login from './components/user-pages/Login';
 import MyUploader from "./components/MyUploader"
 
@@ -22,17 +20,17 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
+  // componentDidMount() {
 
-    console.log(process.env.REACT_APP_OCR)
-    axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
-      .then(responseFromTheBackend => {
-        console.log("User in APP.JS: ", responseFromTheBackend)
-        const { userDoc } = responseFromTheBackend.data;
-        this.syncCurrentUSer(userDoc);
-      })
-      .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
-  }
+  //   console.log(process.env.REACT_APP_OCR)
+  //   axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
+  //     .then(responseFromTheBackend => {
+  //       console.log("User in APP.JS: ", responseFromTheBackend)
+  //       const { userDoc } = responseFromTheBackend.data;
+  //       this.syncCurrentUSer(userDoc);
+  //     })
+  //     .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
+  // }
 
   syncCurrentUSer(user) {
     this.setState({ currentUser: user })
