@@ -1,14 +1,12 @@
 import React from 'react';
 import './App.css';
-import axios from "axios";
+// import axios from "axios";
 import { Switch, Route, NavLink } from "react-router-dom";
 import Signup from "./components/user-pages/Signup";
 // import CountriesList from "./components/CountriesList";
 import Home from "./components/Home";
 // import FileUpload from './components/FileUpload'
-
 // import Drop from "./components/Drop"
-
 import Login from './components/user-pages/Login';
 import MyUploader from "./components/MyUploader"
 
