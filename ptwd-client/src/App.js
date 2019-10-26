@@ -21,15 +21,15 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {
-    axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
-      .then(responseFromTheBackend => {
-        // console.log("User in APP.JS: ", responseFromTheBackend)
-        const { userDoc } = responseFromTheBackend.data;
-        this.syncCurrentUSer(userDoc);
-      })
-      .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
-  }
+  // componentDidMount() {
+  //   axios.get("http://localhost:3000/api/checkuser", { withCredentials: true })
+  //     .then(responseFromTheBackend => {
+  //       // console.log("User in APP.JS: ", responseFromTheBackend)
+  //       const { userDoc } = responseFromTheBackend.data;
+  //       this.syncCurrentUSer(userDoc);
+  //     })
+  //     .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
+  // }
 
   syncCurrentUSer(user) {
     this.setState({ currentUser: user })
