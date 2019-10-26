@@ -35,7 +35,7 @@ class MyUploader extends React.Component {
 
     blah.append('theImage', this.state.file)
 
-    axios.post('http://localhost:3001/testing', blah)
+    axios.post('http://localhost:5000/testing', blah)
 
       // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{
 
