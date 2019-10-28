@@ -1,17 +1,19 @@
 import React from 'react';
 import './App.css';
 // import axios from "axios";
-import { Switch, Route, NavLink } from "react-router-dom";
-import Signup from "./components/user-pages/Signup";
+// import { Switch, Route, NavLink } from "react-router-dom";
+// import Signup from "./components/user-pages/Signup";
 // import CountriesList from "./components/CountriesList";
-import Home from "./components/Home";
-// import FileUpload from './components/FileUpload'
-// import Drop from "./components/Drop"
-import Login from './components/user-pages/Login';
-import MyUploader from "./components/MyUploader"
+// import Home from "./components/Home";
+// import Login from './components/user-pages/Login';
+
+// import MyUploader from "./components/MyUploader"
+import Nav from "./components/Nav"
+import 'react-bulma-components/dist/react-bulma-components.min.css';
 
 
-class App extends React.Component {
+
+export default class App extends React.Component {
 
   constructor() {
     super();
@@ -41,45 +43,11 @@ class App extends React.Component {
   render() {
     // console.log("the state in APPJS: ", this.state);
     return (
+
       <div >
-        <MyUploader />
-
-        {/* <FileUpload /> */}
-        <header>
-          <nav>
-            <NavLink to="/" > Home </NavLink>
-            <NavLink to="/signup-page"> Signup </NavLink>
-            <NavLink to="/login-page"> login </NavLink>
-            <NavLink to="/countries" > Countries </NavLink>
-          </nav>
-        </header>
-        <Switch>
-          {/* this is example how we would render component normally */}
-          {/* <Route exact path="/somePage" component={ someComponentThatWillRenderWhenThisRouteIsHit }   /> */}
-          <Route exact path="/" component={Home} />
-          {/* <Route exact path="/countries" component={CountriesList} /> */}
-
-          {/* if we have to pass some props down to a component,
-          we can't use a standard way of rendering using component={},
-          but instead we have to use render = {}  like in the example below */}
-          <Route exact path="/signup-page" render={() =>
-            <Signup
-              currentUser={this.state.currentUser}
-              onUserChange={userDoc => this.syncCurrentUSer(userDoc)}
-            />
-          } />
-
-          {/* Login component */}
-          <Route exact path="/login-page" component={Login} />
-        </Switch>
-        {/* <CountriesList /> */}
-        {/* <Drop /> */}
-        {/* <Uploader /> */}
+        <Nav />
       </div>
 
-
-    );
+    )
   }
 }
-
-export default App;

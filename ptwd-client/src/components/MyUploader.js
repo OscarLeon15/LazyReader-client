@@ -3,6 +3,7 @@ import React from 'react'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
+// import file from '../img/file.svg'
 
 class MyUploader extends React.Component {
 
@@ -30,33 +31,28 @@ class MyUploader extends React.Component {
     allFiles.forEach(f => f.remove())
 
     // e.preventDefault();
-
     let blah = new FormData();
-
     blah.append('theImage', this.state.file)
 
     axios.post('http://localhost:5000/testing', blah)
-
-      // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{
-
-      // })
-
-
+      // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{})
       .then(responseFromTheBackend => {
-
       })
       .catch(err => console.log("error from inside BLAH", err))
-
   }
 
   render() {
     return (
-      <Dropzone
-        getUploadParams={this.getUploadParams}
-        onChangeStatus={this.handleChangeStatus}
-        onSubmit={this.handleSubmit}
-        accept="image/*,audio/*,video/*"
-      />
+      <div className="container has-text-centered	">
+        <h1 className="has-text-grey-dark	has-text-weight-semibold is-size-4">The best app to convert academic journals to audio.</h1>
+        {/* <img src={file} alt="file icon" /> */}
+        <Dropzone
+          getUploadParams={this.getUploadParams}
+          onChangeStatus={this.handleChangeStatus}
+          onSubmit={this.handleSubmit}
+          accept="image/*,audio/*,video/*"
+        />
+      </div>
     )
   }
 

@@ -1,4 +1,5 @@
-import React from "react";
+import React from "react"
+import MyUploader from './MyUploader'
 
 
 export default class Home extends React.Component {
@@ -6,9 +7,7 @@ export default class Home extends React.Component {
     render() {
         return (
             <section>
-                <h1> Home Page </h1>
-                <p> Welcome to the best app ever! </p>
-                {/* <span> ❤️</span> */}
+                <MyUploader />
             </section>
         )
     }

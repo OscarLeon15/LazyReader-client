@@ -1,37 +1,8 @@
-.App {
-  text-align: center;
+.container{
+  padding-top: 50px;
+  /* border: 2px dotted red; */
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
-
-/* ADDED */
-.dropzone {
-  background: #eee;
-  padding: 130px;
-  margin: 0 auto;
-  width: 800px;
-  font-size: 22px;
-  color: white;
-}
-
-.dropzone>div {
-  background: gray;
-  min-height: 300px;
+.container h1 {
+  margin-bottom: 10px;
 }
