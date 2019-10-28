@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 // import file from '../img/file.svg'
 
-class MyUploader extends React.Component {
+export default class MyUploader extends React.Component {
 
   constructor() {
     super();
@@ -37,6 +37,7 @@ class MyUploader extends React.Component {
     axios.post('http://localhost:5000/testing', blah)
       // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{})
       .then(responseFromTheBackend => {
+
       })
       .catch(err => console.log("error from inside BLAH", err))
   }
@@ -58,4 +59,3 @@ class MyUploader extends React.Component {
 
 }
 
-export default MyUploader

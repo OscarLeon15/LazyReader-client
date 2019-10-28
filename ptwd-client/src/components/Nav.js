@@ -1,5 +1,4 @@
 import React from 'react'
-import 'react-bulma-components/dist/react-bulma-components.min.css'
 import logo from "../img/logo.svg"
 import { Switch, Route, NavLink } from "react-router-dom"
 // import CountriesList from "./components/CountriesList"
@@ -39,12 +38,12 @@ export default class Nav extends React.Component {
             </div>
 
             <div className="navbar-end">
-              <div class="navbar-item">
-                <div class="buttons">
-                  <NavLink to="/signup-page" class="button is-primary">
+              <div className="navbar-item">
+                <div className="buttons">
+                  <NavLink to="/signup-page" className="button is-primary">
                     <strong>Sign up</strong>
                   </NavLink>
-                  <NavLink to="/login-page" class="button is-light">
+                  <NavLink to="/login-page" className="button is-light">
                     Log in
           </NavLink>
                 </div>
