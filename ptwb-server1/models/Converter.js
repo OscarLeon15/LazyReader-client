@@ -6,5 +6,5 @@ const converterSchema = new Schema({
  fileType: String,
 
 })
-const Converter = mongoose.model('User', converterSchema)
+const Converter = mongoose.model('converter', converterSchema)
 module.exports = Converter;
