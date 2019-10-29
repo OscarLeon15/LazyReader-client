@@ -1,0 +1,161 @@
+.landing-component body {
+  margin: 0;
+  padding: 0;
+}
+
+.landing-component ul {
+  margin: 0;
+  padding: 0;
+}
+
+.landing-component header {
+  background: transparent;
+  align-items: center;
+  display: flex;
+  margin: 2em;
+  position: absolute;
+  right: 5px;
+  top: 0%;
+}
+
+
+.landing-component nav {
+  flex: 1;
+  z-index: 1;
+}
+
+.landing-component nav ul {
+  color: white;
+  font-weight: bold;
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 100px;
+}
+
+
+.landing-component nav li {
+  list-style: none;
+  margin: 30%;
+}
+
+.landing-component li a {
+  text-decoration: none;
+  color: white;
+}
+
+.landing-component .banner {
+  width: 100vw;
+  height: 60vh;
+  object-fit: fill;
+}
+
+.landing-component #outer-carousel {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.landing-component #carousel {
+  display: flex;
+  align-items: center;
+  margin-top: -130px;
+}
+
+
+.landing-component #imageOne,
+.landing-component #imageTwo,
+.landing-component #imageThree {
+  min-height: 300px;
+  min-width: 300px;
+  margin: 25px;
+}
+
+.landing-component .ads-div {
+  width: 100vw;
+  display: flex;
+  justify-content: space-between
+}
+
+.landing-component .ad-left,
+.landing-component .ad-right {
+  margin: 0% 2%;
+  margin-top: -100px;
+  margin-bottom: 2%;
+  max-height: 200px;
+  max-width: 300px;
+}
+
+@Media only screen and (max-width: 1250px) {
+
+  .landing-component .ad-left,
+  .landing-component .ad-right {
+    margin-top: -20px;
+  }
+}
+
+@Media only screen and (max-width: 750px) {
+  .landing-component .ads-div {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-component .ad-left,
+  .landing-component .ad-right {
+    margin-top: 0px;
+  }
+}
+
+
+@Media only screen and (max-width: 1100px) {
+  .landing-component .hide-when-small {
+    display: none !important;
+  }
+}
+
+
+
+
+@Media only screen and (max-width: 750px) {
+  .landing-component .hide-when-tiny {
+    display: none !important;
+  }
+
+  .landing-component .banner {
+    width: 100vw;
+    height: 45vh;
+  }
+
+  .landing-component #carousel {
+    margin-top: -100px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .landing-component nav ul {
+    margin-right: 10px;
+    margin: 0 50%;
+    
+  }
+
+  .landing-component nav li {
+    margin: 30px 5px;
+
+  }
+
+}
+
+@Media only screen and (max-width: 550px) {
+
+  .landing-component #outer-carousel {
+    margin: 0px 5px;
+  }
+
+  .landing-component #imageOne,
+  .landing-component #imageTwo,
+  .landing-component #imageThree {
+    min-height: 200px;
+    min-width: 200px;
+    margin: 25px;
+  }
+}
