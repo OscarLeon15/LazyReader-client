@@ -10,7 +10,6 @@ const logger = require('morgan');
 const path = require('path');
 const session = require("express-session");
 const cors = require("cors");
-// const ibm          = require('ibm-watson');
 
 const user = require('./models/User');
 
@@ -73,9 +72,6 @@ app.use('/', index);
 
 const authRoutes = require("./routes/auth.routes");
 app.use("/", authRoutes);
-
-// const index = require('./routes/example');
-// app.use('/', hola);
 
 const testing = require('./routes/testing');
 app.use('/', testing);
