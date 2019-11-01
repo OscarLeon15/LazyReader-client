@@ -45,40 +45,89 @@ export default class Login extends React.Component {
         const { fullName, email, password } = this.state
 
         return (
-            <section>
-                <h2> Login </h2>
-                <form onSubmit={event => this.handleSubmit(event)} >
+            <div>
 
-                    <label> fullName: </label>
-                    <input
-                        value={fullName} // this.state.email
-                        onChange={event => this.genericSync(event)}
-                        type='text'
-                        name='fullName'
-                        placeholder='paco peco'
-                    />
-                    <label> Email: </label>
-                    <input
-                        value={email} // this.state.email
-                        onChange={event => this.genericSync(event)}
-                        type='email'
-                        name='email'
-                        placeholder='my-email@ironhack.com'
-                    />
 
-                    <label> Password</label>
-                    <input
-                        value={password} // this.state.password
-                        onChange={event => this.genericSync(event)}
-                        type='password'
-                        name='password'
-                        placeholder='***********'
-                    />
-                    <button> Login </button>
-                </form>
-                {/* if the message is not null (basically if there's a message) then show it in this <div> tag */}
-                {this.state.message && <div> {this.state.message} </div>}
-            </section>
+
+                <div className="columns is-centered">
+                    <div className="column is-5-tablet is-4-desktop is-3-widescreen">
+                        <h1> Login </h1>
+
+
+                        <form onSubmit={event => this.handleSubmit(event)} >
+                            {/*----- FULL NAME -----*/}
+                            <div className="field">
+                                <p className="control has-icons-left has-icons-right">
+                                    <input
+                                        className="input"
+                                        value={fullName} // this.state.email
+                                        onChange={event => this.genericSync(event)}
+                                        type='text'
+                                        name='fullName'
+                                        placeholder='Full Name'
+                                    />
+                                    <span className="icon is-small is-left">
+                                        <i className="fa fa-envelope"></i>
+                                    </span>
+                                    <span className="icon is-small is-right">
+                                        <i className="fa fa-check"></i>
+                                    </span>
+                                </p>
+                            </div>
+
+
+                            {/*----- EMAIL -----*/}
+                            <div className="field">
+                                <p className="control has-icons-left has-icons-right">
+                                    <input
+                                        className="input"
+                                        value={email} // this.state.email
+                                        onChange={event => this.genericSync(event)}
+                                        type='email'
+                                        name='email'
+                                        placeholder='myname@email.com'
+                                    />
+                                    <span className="icon is-small is-left">
+                                        <i className="fa fa-envelope"></i>
+                                    </span>
+                                    <span className="icon is-small is-right">
+                                        <i className="fa fa-check"></i>
+                                    </span>
+                                </p>
+                            </div>
+
+                            {/*----- PASSWORD -----*/}
+                            <div className="field">
+                                <p className="control has-icons-left">
+                                    <input
+                                        className="input"
+                                        value={password} // this.state.password
+                                        onChange={event => this.genericSync(event)}
+                                        type='password'
+                                        name='password'
+                                        placeholder='***********'
+                                    />
+                                    <span className="icon is-small is-left">
+                                        <i className="fa fa-lock"></i>
+                                    </span>
+                                </p>
+                            </div>
+
+                            {/*----- SUBMIT -----*/}
+                            <div className="field">
+                                <p className="control">
+                                    <button className="button is-success">
+                                        Login
+                                </button>
+                                </p>
+                            </div>
+
+                        </form>
+                        {this.state.message && <div> {this.state.message} </div>}
+                    </div>
+                </div>
+
+            </div >
         )
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react'
-import 'react-bulma-components/dist/react-bulma-components.min.css'
 import logo from "../img/logo.svg"
 import { Switch, Route, NavLink } from "react-router-dom"
 // import CountriesList from "./components/CountriesList"
@@ -27,7 +26,7 @@ export default class Nav extends React.Component {
               <img src={logo} width="152" height="28" alt="lazy reader logo" />
             </NavLink>
 
-            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <a href="https://#" role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>
               <span aria-hidden="true"></span>

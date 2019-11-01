@@ -1,0 +1,93 @@
+
+
+.mailchimp .wrapper {
+  width: 60%;
+  max-width: 800px;
+  margin: 1% auto;
+}
+
+.mailchimp .box {
+  background-color: #fff;
+  padding: 35px;
+  border-radius: .25rem;
+  text-align: center;
+}
+
+
+.mailchimp h1 {
+  color: rgb(53, 114, 210);
+  font-size: 17px;
+  font-weight: bold;
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mailchimp p {
+  margin-top: 10px;
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 300;
+}
+
+.mailchimp input {
+  border: none;
+  box-shadow: 0px 0px 15px #bec0c5;
+  border-radius: 4px;
+  font-size: 13px;
+  padding: 20px;
+  color: #000;
+  transition: all .15s ease-in;
+}
+
+.mailchimp input[type=email] {
+  width: 60%;
+}
+
+@Media only screen and (max-width: 750px){
+  .mailchimp .wrapper {
+    width: 80%;
+    margin: 1%;
+  }
+  .mailchimp .box {
+    /* width: 100%; */
+    margin: auto;
+  }
+  .mailchimp input {
+    margin: 2% auto;
+  }
+
+ }
+
+
+
+ .mailchimp input[type=submit] {
+  background-color: rgb(53, 114, 210);
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid transparent;
+}
+
+.mailchimp input[type=submit]::focus {
+  border: 1px solid #fff;
+}
+
+.mailchimp input:focus {
+  border: none;
+  outline: none;
+}
+
+.mailchimp input::placeholder {
+  color: #999;
+}
+
+.mailchimp #subscribe-result p {
+  margin-top: 35px;
+}
+
+.mailchimp #mc-embedded-subscribe {
+  border: 3px solid #becee8;
+  color: black;
+  background-color: white;
+}

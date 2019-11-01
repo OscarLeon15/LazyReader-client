@@ -2,7 +2,8 @@ import React from 'react';
 import './App.css';
 import axios from "axios";
 import Nav from "./components/Nav"
-import 'react-bulma-components/dist/react-bulma-components.min.css';
+import 'react-bulma-components/dist/react-bulma-components.min.css'
+
 
 
 export default class App extends React.Component {
