@@ -11,6 +11,7 @@ class MyUploader extends React.Component {
     super();
     this.state = {
       file: null
+
     }
   }
 
@@ -36,7 +37,12 @@ class MyUploader extends React.Component {
 
     axios.post('http://localhost:5000/testing', blah)
       // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{})
+
       .then(responseFromTheBackend => {
+        
+
+        console.log(responseFromTheBackend)
+        console.log(responseFromTheBackend.data)
       })
       .catch(err => console.log("error from inside BLAH", err))
   }

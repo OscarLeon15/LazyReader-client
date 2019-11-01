@@ -5,7 +5,6 @@ import Nav from "./components/Nav"
 import 'react-bulma-components/dist/react-bulma-components.min.css';
 
 
-
 export default class App extends React.Component {
 
 
@@ -24,7 +23,6 @@ export default class App extends React.Component {
   syncCurrentUSer(user) {
     this.setState({ currentUser: user })
   }
-
 
 
   render() {
