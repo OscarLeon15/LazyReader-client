@@ -4,6 +4,7 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 // import file from '../img/file.svg'
+import ocrSpaceApi from 'ocr-space-api';
 
 export default class MyUploader extends React.Component {
 
@@ -15,6 +16,7 @@ export default class MyUploader extends React.Component {
     }
   }
 
+
   // specify upload params and url for your files
   getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }
 
@@ -23,7 +25,7 @@ export default class MyUploader extends React.Component {
     this.setState({
       file: file
     })
-    console.log(status, meta, file)
+    // console.log(status, meta, file);
   }
 
   // receives array of files that are done uploading when submit button is clicked
@@ -39,7 +41,34 @@ export default class MyUploader extends React.Component {
       // router.post(req, res, next, uplaodCloud.single('theImage') ,()=>{})
 
       .then(responseFromTheBackend => {
+
+        console.log(responseFromTheBackend.data)
+
+      let  options =  { 
+          apikey: process.env.REACT_APP_OCR,
+          language: 'eng', // Português
+          imageFormat: 'image/png', // Image Type (Only png ou gif is acceptable at the moment i wrote this)
+          isOverlayRequired: true
+        };
+
+        // Image file to upload
+        let imageFilePath = responseFromTheBackend.data;
+       
+      
+      // Run and wait the result
+    
+      ocrSpaceApi.parseImageFromLocalFile(imageFilePath, options)
+
+          .then( (parsedResults) => {
+            console.log(parsedResults)
+            console.log('parsedText: \n', parsedResults.parsedText);
+            console.log('ocrParsedResults: \n', parsedResults.ocrParsedResult);
+          }).catch( (err) => {
+            console.log('ERROR:', err);
+          });
+      
       })
+  
       .catch(err => console.log("error from inside BLAH", err))
   }
 
