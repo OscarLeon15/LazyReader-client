@@ -39,7 +39,10 @@ export default class MyUploader extends React.Component {
 
     axios.post('http://localhost:5000/testing', formData)
       .then(responseFromTheBackend => {
-        // console.log(responseFromTheBackend.data)
+
+        // responseFromTheBackend.data is the image url
+        console.log(responseFromTheBackend.data)
+
         // Example API Request -----------------------------
         let https = require('https');
 
