@@ -45,7 +45,7 @@ export default class Nav extends React.Component {
                   </NavLink>
                   <NavLink to="/login-page" className="button is-light">
                     Log in
-          </NavLink>
+                  </NavLink>
                 </div>
               </div>
             </div>

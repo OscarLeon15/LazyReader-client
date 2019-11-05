@@ -1,5 +1,5 @@
 // let yes = () => {
-    
+// }
     
     //Prepare form data
 let formData = new FormData();
@@ -66,4 +66,3 @@ let formData = new FormData();
         }
     });
 
-// }
