@@ -3,27 +3,28 @@ import axios from 'axios';
 
 export default class Login extends React.Component {
     constructor() {
-        super()
+        super();
         this.state = {
-            email: '',
-            password: '',
+            fullName: "",
+            email: "",
+            password: "",
             message: null
         }
     }
 
     genericSync(event) {
         // console.log("what is: ", event.target.value)
-        const { name, value } = event.target
-        this.setState({ [name]: value })
+        const { name, value } = event.target;
+        this.setState({ [name]: value });
     }
 
     handleSubmit(event) {
         // console.log("submitting form");
-        event.preventDefault()
+        event.preventDefault();
 
         axios.post(
             // route we are hitting in the backend
-            "http://localhost:3000/api/login",
+            "http://localhost:5000/api/login",
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
@@ -31,15 +32,32 @@ export default class Login extends React.Component {
         )
             .then(responseFromServer => {
                 // console.log("response is:", responseFromServer);
-                const { userDoc } = responseFromServer.data
-                this.props.onUserChange(userDoc)
-                alert('You are logged in.')
+                const { userDoc } = responseFromServer.data;
+                // this.props.onUserChange(userDoc);
+                alert("You are logged in.")
             })
-            .catch(err => {
-                // console.log("err: ", err.response)
-                if (err.response.data) return this.setState({ message: err.response.data.message })
+            .catch((error) => {
+                // Error
+                if (error.response) {
+                    // The request was made and the server responded with a status code
+                    // that falls out of the range of 2xx
+                    // console.log(error.response.data);
+                    // console.log(error.response.status);
+                    // console.log(error.response.headers);
+                } else if (error.request) {
+                    // The request was made but no response was received
+                    // `error.request` is an instance of XMLHttpRequest in the 
+                    // browser and an instance of
+                    // http.ClientRequest in node.js
+                    console.log(error.request);
+                } else {
+                    // Something happened in setting up the request that triggered an Error
+                    console.log('Error', error.message);
+                }
+                console.log(error.config);
             })
     }
+
 
     render() {
         const { fullName, email, password } = this.state
@@ -55,27 +73,6 @@ export default class Login extends React.Component {
 
 
                         <form onSubmit={event => this.handleSubmit(event)} >
-                            {/*----- FULL NAME -----*/}
-                            <div className="field">
-                                <p className="control has-icons-left has-icons-right">
-                                    <input
-                                        className="input"
-                                        value={fullName} // this.state.email
-                                        onChange={event => this.genericSync(event)}
-                                        type='text'
-                                        name='fullName'
-                                        placeholder='Full Name'
-                                    />
-                                    <span className="icon is-small is-left">
-                                        <i className="fa fa-envelope"></i>
-                                    </span>
-                                    <span className="icon is-small is-right">
-                                        <i className="fa fa-check"></i>
-                                    </span>
-                                </p>
-                            </div>
-
-
                             {/*----- EMAIL -----*/}
                             <div className="field">
                                 <p className="control has-icons-left has-icons-right">

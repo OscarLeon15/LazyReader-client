@@ -5,6 +5,7 @@ import { Switch, Route, NavLink } from "react-router-dom"
 import Home from '../components/Home'
 import Signup from "../components/user-pages/Signup"
 import Login from '../components/user-pages/Login'
+import axios from 'axios'
 
 
 export default class Nav extends React.Component {
@@ -15,6 +16,21 @@ export default class Nav extends React.Component {
       currentUser: null
     }
   }
+
+  componentDidMount() {
+    axios.get("http://localhost:5000/api/checkuser", { withCredentials: true })
+      .then(responseFromTheBackend => {
+        // console.log("User in APP.JS: ", responseFromTheBackend)
+        const { userDoc } = responseFromTheBackend.data;
+        this.syncCurrentUSer(userDoc);
+      })
+      .catch(err => console.log("Err while getting the user from the checkuser route: ", err))
+  }
+
+  syncCurrentUSer(user) {
+    this.setState({ currentUser: user })
+  }
+
 
   render() {
     return (
