@@ -12,7 +12,7 @@ authRouter.post("/api/signup", (req, res, next) => {
   console.log("frontend form data: ", req.body);
   const { fullName, email, password } = req.body;
 
-  if (fullName == "" || email == "" || password.match(/[0-9]/) === null) {
+  if (fullName == "" || email == "" || password.match(/^[a-zA-Z0-9_.-]*$/) === null) {
     // send JSON file to the frontend if any of these fields are empty or password doesn't contain a number
     res.status(401).json({ message: "All fields need to be filled and password must contain a number! 🤨" });
     return;

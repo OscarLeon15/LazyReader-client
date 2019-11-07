@@ -4,16 +4,19 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 // import Watson from '../components/Watson'
-
+let test = ''
 
 export default class MyUploader extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      file: null
+      file: null,
+      src: [],
+      str: [],
+      test: ''
     }
-    // this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   // specify upload params and url for your files
@@ -41,12 +44,12 @@ export default class MyUploader extends React.Component {
       .then(responseFromTheBackend => {
 
         // responseFromTheBackend.data is the image url
-        console.log(responseFromTheBackend.data)
+        // console.log(responseFromTheBackend.data)
 
         // Example API Request -----------------------------
-        let https = require('https');
+        var https = require('https');
 
-        let options = {
+        var options = {
           'method': 'GET',
           'hostname': 'api.ocr.space',
           'path': `/parse/imageurl?apikey=86be69917788957&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
@@ -55,18 +58,22 @@ export default class MyUploader extends React.Component {
           }
         };
 
-        let req = https.request(options, function (res) {
-          let chunks = [];
+        var req = https.request(options, function (res) {
+          var chunks = [];
 
           res.on("data", function (chunk) {
             chunks.push(chunk);
           });
 
           res.on("end", function (chunk) {
-            let body = Buffer.concat(chunks);
-            let stringBody = body.toString()
-            let newString = JSON.stringify(stringBody)
-            console.log(newString)
+            var body = Buffer.concat(chunks);
+            var stringBody = body.toString()
+            var newString = JSON.stringify(stringBody)
+            //   this.setState({ test: newString }, () => {
+            test = newString
+            console.log(test)
+            // })
+            // console.log(typeof newString)
           });
 
           res.on("error", function (error) {
@@ -74,7 +81,6 @@ export default class MyUploader extends React.Component {
           });
 
         });
-
 
         var postData = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;name=\"language\"\r\n\r\neng\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"isOverlayRequired\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"url\"\r\n\r\nhttp://dl.a9t9.com/ocrbenchmark/eng.png\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"iscreatesearchablepdf\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"issearchablepdfhidetextlayer\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--";
 
@@ -106,6 +112,8 @@ export default class MyUploader extends React.Component {
           accept=".png, .jpg, .jpeg, .pdf"
         />
         {/* <Watson name={this.newString} /> */}
+
+
       </div>
     )
   }
