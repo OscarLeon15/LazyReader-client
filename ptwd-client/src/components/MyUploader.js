@@ -3,6 +3,9 @@ import React from 'react'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
+// import file from '../img/file.svg'
+// import ocrSpaceApi from 'ocr-space-api';
+// require('dotenv').config()
 // import Watson from '../components/Watson'
 let test = ''
 
@@ -40,10 +43,31 @@ export default class MyUploader extends React.Component {
     formData.append('theImage', this.state.file)
     // console.log("THIS STATE FILE=====>>>" + this.state.file)
 
-    axios.post('http://localhost:5000/testing', formData)
+    axios.post(`${process.env.REACT_APP_API_URL}/testing`,{withCredentials: true}, formData)
       .then(responseFromTheBackend => {
 
         // responseFromTheBackend.data is the image url
+        console.log(responseFromTheBackend.data)
+
+        // let options = {
+        //   apikey: process.env.REACT_APP_OCR,
+        //   language: 'eng',
+        //   imageFormat: 'image/png', // Image Type (Only png ou gif is acceptable at the moment i wrote this)
+        //   isOverlayRequired: true
+        // };
+
+        // Image file to upload
+        // let imageFilePath = responseFromTheBackend.data;
+
+        // Run and wait the result
+        // ocrSpaceApi.parseImageFromLocalFile(imageFilePath, options)
+        //   .then((parsedResults) => {
+        //     console.log(parsedResults)
+        //     console.log('parsedText: \n', parsedResults.parsedText);
+        //     console.log('ocrParsedResults: \n', parsedResults.ocrParsedResult);
+        //   }).catch((err) => {
+        //     console.log('ERROR:', err);
+        //   });
         // console.log(responseFromTheBackend.data)
 
         // Example API Request -----------------------------

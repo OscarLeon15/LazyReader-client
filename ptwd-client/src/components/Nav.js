@@ -5,6 +5,7 @@ import { Switch, Route, NavLink } from "react-router-dom"
 import Home from '../components/Home'
 import Signup from "../components/user-pages/Signup"
 import Login from '../components/user-pages/Login'
+import CountriesList from '../components/CountriesList'
 import axios from 'axios'
 
 
@@ -18,7 +19,7 @@ export default class Nav extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api/checkuser", { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
       .then(responseFromTheBackend => {
         // console.log("User in APP.JS: ", responseFromTheBackend)
         const { userDoc } = responseFromTheBackend.data;
@@ -78,6 +79,7 @@ export default class Nav extends React.Component {
           } />
           {/* Login component */}
           <Route exact path="/login-page" component={Login} />
+          <Route exact path="/bleh" component={CountriesList} />
         </Switch>
 
       </div>

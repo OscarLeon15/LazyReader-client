@@ -76,4 +76,15 @@ app.use("/", authRoutes);
 const testing = require('./routes/testing');
 app.use('/', testing);
 
+// const users = require('./routes/users');
+// app.use('/', users);
+
+
+
+
+app.use((req, res, next) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/public/index.html");
+});
+
 module.exports = app;
