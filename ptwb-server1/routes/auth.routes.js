@@ -1,6 +1,6 @@
 const express = require("express");
 
-const authRouter = express.Router();
+const authRoutes = express.Router();
 
 const User = require("../models/User");
 
@@ -8,11 +8,11 @@ const bcrypt = require("bcryptjs");
 
 const passport = require("passport");
 
-authRouter.post("/api/signup", (req, res, next) => {
+authRoutes.post("/api/signup", (req, res, next) => {
   console.log("frontend form data: ", req.body);
   const { fullName, email, password } = req.body;
 
-  if (fullName == "" || email == "" || password.match(/[0-9]/) === null) {
+  if (fullName == "" || email == "" || password.match(/^[a-zA-Z0-9_.-]*$/) === null) {
     // send JSON file to the frontend if any of these fields are empty or password doesn't contain a number
     res.status(401).json({ message: "All fields need to be filled and password must contain a number! 🤨" });
     return;
@@ -51,7 +51,7 @@ authRouter.post("/api/signup", (req, res, next) => {
     .catch(err => next(err)); // close User.findOne()
 });
 
-authRouter.post("/api/login", (req, res, next) => {
+authRoutes.post("/api/login", (req, res, next) => {
   passport.authenticate("local", (err, userDoc, failureDetails) => {
     if (err) {
       res.status(500).json({ message: "Something went wrong with login." })
@@ -73,7 +73,7 @@ authRouter.post("/api/login", (req, res, next) => {
   })(req, res, next);
 })
 
-authRouter.delete("/api/logout", (req, res, next) => {
+authRoutes.delete("/api/logout", (req, res, next) => {
   // "req.logout()" is a Passport method that removes the user ID from session
   req.logout();
   // send empty "userDoc" when you log out
@@ -82,7 +82,7 @@ authRouter.delete("/api/logout", (req, res, next) => {
 
 // check if user is logged in and if we are logged in what are user's details
 // this is the information that is useful for the frontend application
-authRouter.get("/api/checkuser", (req, res, next) => {
+authRoutes.get("/api/checkuser", (req, res, next) => {
   // console.log("do i have user: ", req.user);
   if (req.user) {
     req.user.encryptedPassword = undefined;
@@ -92,4 +92,4 @@ authRouter.get("/api/checkuser", (req, res, next) => {
     res.status(401).json({ userDoc: null })
   }
 })
-module.exports = authRouter;
+module.exports = authRoutes;

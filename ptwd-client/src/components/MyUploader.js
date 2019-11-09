@@ -4,7 +4,7 @@ import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 // import file from '../img/file.svg'
-import ocrSpaceApi from 'ocr-space-api';
+// import ocrSpaceApi from 'ocr-space-api';
 require('dotenv').config()
 
 
@@ -43,21 +43,12 @@ export default class MyUploader extends React.Component {
         // responseFromTheBackend.data is the image url
         console.log(responseFromTheBackend.data)
 
-<<<<<<< HEAD
-      let  options =  { 
-          apikey: process.env.REACT_APP_OCR,
-          language: 'eng', // English
-          imageFormat: 'image/png', // Image Type (Only png ou gif is acceptable at the moment i wrote this)
-          isOverlayRequired: true
-        };
-=======
         // let options = {
         //   apikey: process.env.REACT_APP_OCR,
         //   language: 'eng',
         //   imageFormat: 'image/png', // Image Type (Only png ou gif is acceptable at the moment i wrote this)
         //   isOverlayRequired: true
         // };
->>>>>>> c9cae702113a60b5590add849b49bcb1a095281b
 
         // Image file to upload
         // let imageFilePath = responseFromTheBackend.data;

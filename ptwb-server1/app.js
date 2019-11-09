@@ -76,4 +76,7 @@ app.use("/", authRoutes);
 const testing = require('./routes/testing');
 app.use('/', testing);
 
+// const users = require('./routes/users');
+// app.use('/', users);
+
 module.exports = app;
