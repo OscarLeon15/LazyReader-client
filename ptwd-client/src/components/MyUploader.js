@@ -5,7 +5,7 @@ import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 // import file from '../img/file.svg'
 // import ocrSpaceApi from 'ocr-space-api';
-require('dotenv').config()
+// require('dotenv').config()
 
 
 export default class MyUploader extends React.Component {
