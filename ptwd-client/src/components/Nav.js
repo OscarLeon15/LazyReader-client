@@ -19,7 +19,7 @@ export default class Nav extends React.Component {
   }
 
   componentDidMount() {
-    axios.get("http://localhost:5000/api/checkuser", { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_API_URL}/checkuser`, { withCredentials: true })
       .then(responseFromTheBackend => {
         // console.log("User in APP.JS: ", responseFromTheBackend)
         const { userDoc } = responseFromTheBackend.data;

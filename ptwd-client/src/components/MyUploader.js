@@ -38,7 +38,7 @@ export default class MyUploader extends React.Component {
     let formData = new FormData();
     formData.append('theImage', this.state.file)
 
-    axios.post('http://localhost:5000/testing', formData)
+    axios.post(`${process.env.REACT_APP_API_URL}/testing`,{withCredentials: true}, formData)
       .then(responseFromTheBackend => {
         // responseFromTheBackend.data is the image url
         console.log(responseFromTheBackend.data)
