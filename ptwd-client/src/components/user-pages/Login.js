@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import {BrowserRouter as Router, Redirect} from 'react-router-dom'
 
 export default class Login extends React.Component {
     constructor() {
@@ -60,7 +61,12 @@ export default class Login extends React.Component {
 
 
     render() {
-        const { fullName, email, password } = this.state
+        const { email, password } = this.state
+        if (this.props.currentUser) {
+            return (
+                <Redirect to="/Personal" />
+            )
+        }
 
         return (
             <div>

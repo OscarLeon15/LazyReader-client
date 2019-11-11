@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import {BrowserRouter as Router, Redirect} from 'react-router-dom'
 
 
 
@@ -47,9 +48,7 @@ export default class Signup extends React.Component {
         console.log("STATE: ", this.state);
         if (this.props.currentUser) {
             return (
-                <div>
-                    <h2> Welcome to your app, {this.props.currentUser.fullName} ! You're signed in! </h2>
-                </div>
+                <Redirect to="/login-page" />
             )
         }
 

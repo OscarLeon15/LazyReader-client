@@ -49,6 +49,8 @@ export default class MyUploader extends React.Component {
         // responseFromTheBackend.data is the image url
         console.log(responseFromTheBackend.data)
 
+<<<<<<< HEAD
+=======
         // let options = {
         //   apikey: process.env.REACT_APP_OCR,
         //   language: 'eng',
@@ -70,10 +72,11 @@ export default class MyUploader extends React.Component {
         //   });
         // console.log(responseFromTheBackend.data)
 
+>>>>>>> 194e592023dd253bb6ca45a108ae7a2c70e8bc04
         // Example API Request -----------------------------
-        var https = require('https');
+        let https = require('https');
 
-        var options = {
+        let options = {
           'method': 'GET',
           'hostname': 'api.ocr.space',
           'path': `/parse/imageurl?apikey=86be69917788957&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
@@ -82,14 +85,18 @@ export default class MyUploader extends React.Component {
           }
         };
 
-        var req = https.request(options, function (res) {
-          var chunks = [];
+        let req = https.request(options, function (res) {
+          let chunks = [];
 
           res.on("data", function (chunk) {
             chunks.push(chunk);
           });
 
           res.on("end", function (chunk) {
+<<<<<<< HEAD
+            let body = Buffer.concat(chunks);
+            console.log(body.toString());
+=======
             var body = Buffer.concat(chunks);
             var stringBody = body.toString()
             var newString = JSON.stringify(stringBody)
@@ -98,6 +105,7 @@ export default class MyUploader extends React.Component {
             console.log(test)
             // })
             // console.log(typeof newString)
+>>>>>>> 194e592023dd253bb6ca45a108ae7a2c70e8bc04
           });
 
           res.on("error", function (error) {
@@ -106,7 +114,11 @@ export default class MyUploader extends React.Component {
 
         });
 
+<<<<<<< HEAD
+        let postData = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"language\"\r\n\r\neng\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"isOverlayRequired\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"url\"\r\n\r\nhttp://dl.a9t9.com/ocrbenchmark/eng.png\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"iscreatesearchablepdf\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"issearchablepdfhidetextlayer\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--";
+=======
         var postData = "------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data;name=\"language\"\r\n\r\neng\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"isOverlayRequired\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"url\"\r\n\r\nhttp://dl.a9t9.com/ocrbenchmark/eng.png\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"iscreatesearchablepdf\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW\r\nContent-Disposition: form-data; name=\"issearchablepdfhidetextlayer\"\r\n\r\nfalse\r\n------WebKitFormBoundary7MA4YWxkTrZu0gW--";
+>>>>>>> 194e592023dd253bb6ca45a108ae7a2c70e8bc04
 
         req.setHeader('content-type', 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW');
 
