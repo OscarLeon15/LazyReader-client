@@ -3,10 +3,13 @@ import React from 'react'
 import 'react-dropzone-uploader/dist/styles.css'
 import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
-// import file from '../img/file.svg'
-// import ocrSpaceApi from 'ocr-space-api';
-// require('dotenv').config()
-// import Watson from '../components/Watson'
+
+
+// HELP ===> Trying to get 'test' from line 68 out of scope... how??? Can't return or set state. Also tried setting global as below... 
+// After the OCR Api runs, 'test' contains the parsed text. Need to get this text to display on screen.
+
+
+
 let test = ''
 
 export default class MyUploader extends React.Component {
@@ -15,10 +18,6 @@ export default class MyUploader extends React.Component {
     super(props);
     this.state = {
       file: null,
-      src: [],
-      str: [],
-      
-      
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -44,7 +43,7 @@ export default class MyUploader extends React.Component {
     formData.append('theImage', this.state.file)
     // console.log("THIS STATE FILE=====>>>" + this.state.file)
 
-    axios.post(`${process.env.REACT_APP_API_URL}/testing`,{withCredentials: true}, formData)
+    axios.post(`${process.env.REACT_APP_API_URL}/testing`, { withCredentials: true }, formData)
       .then(responseFromTheBackend => {
 
         // responseFromTheBackend.data is the image url
@@ -71,7 +70,8 @@ export default class MyUploader extends React.Component {
 
           res.on("end", function (chunk) {
             let body = Buffer.concat(chunks);
-            console.log(body.toString());
+            test = body.toString()
+            // console.log(body.toString());
           });
 
           res.on("error", function (error) {
@@ -88,8 +88,6 @@ export default class MyUploader extends React.Component {
 
         req.end();
 
-        // let newString = JSON.stringify(req)
-        // console.log("THIS IS JSON STRINGIFY REQ ======>" + JSON.stringify(req))
         // -----------------------------  
       })
 
@@ -100,8 +98,7 @@ export default class MyUploader extends React.Component {
 
   render() {
     return (
-      <div className="container has-text-centered	">
-        <h1 className="has-text-grey-dark	has-text-weight-semibold is-size-4">The best app to convert academic journals to audio.</h1>
+      <div className="container">
         {/* <img src={file} alt="file icon" /> */}
         <Dropzone
           getUploadParams={this.getUploadParams}
@@ -109,9 +106,6 @@ export default class MyUploader extends React.Component {
           onSubmit={this.handleSubmit}
           accept=".png, .jpg, .jpeg, .pdf"
         />
-        {/* <Watson name={this.newString} /> */}
-
-        <p> hello  </p>
       </div>
     )
   }

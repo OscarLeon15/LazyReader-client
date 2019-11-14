@@ -1,3 +1,8 @@
+body {
+  background: #fafafa;
+  height: 100vh;
+}
+
 .container{
   padding-top: 50px;
   /* border: 2px dotted red; */
@@ -6,3 +11,33 @@
 .container h1 {
   margin-bottom: 10px;
 }
+
+.card p  {
+  color: #4a4a4a !important;
+}
+
+.form-style {
+  padding: 3rem;
+  margin-top: 3rem;
+}
+
+.center-nav-text {
+  flex-grow: 1;
+  justify-content: center !important;
+ 
+}
+
+.center-nav-text > * {
+   margin: 0 1rem;
+}
+
+/* Cards ---------- */
+.card h1 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.card-footer-item {
+  background: navajowhite;
+}
+

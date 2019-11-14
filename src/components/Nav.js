@@ -5,6 +5,10 @@ import { Switch, Route, NavLink } from "react-router-dom"
 import Home from '../components/Home'
 import Signup from "../components/user-pages/Signup"
 import Login from '../components/user-pages/Login'
+import textToSpeech from '../components/textToSpeech'
+import speechToText from '../components/speechToText'
+import textFromImage from '../components/textFromImage'
+
 import CountriesList from '../components/CountriesList'
 import axios from 'axios'
 
@@ -38,6 +42,7 @@ export default class Nav extends React.Component {
       <div>
 
         <nav className="navbar is-light" role="navigation" aria-label="main navigation">
+
           <div className="navbar-brand">
             <NavLink to="/" className="navbar-item" >
               <img src={logo} width="152" height="28" alt="lazy reader logo" />
@@ -51,7 +56,16 @@ export default class Nav extends React.Component {
           </div>
 
           <div id="navbarBasicExample" className="navbar-menu">
-            <div className="navbar-start">
+            <div className="navbar-start center-nav-text">
+              <NavLink to="/textToSpeech" className="navbar-item" >
+                Text-to-Speech
+              </NavLink>
+              <NavLink to="/speechToText" className="navbar-item">
+                Speech-to-Text
+              </NavLink>
+              <NavLink to="/textFromImage" className="navbar-item">
+                Text-from-Image
+              </NavLink>
             </div>
 
             <div className="navbar-end">
@@ -71,6 +85,11 @@ export default class Nav extends React.Component {
 
         <Switch>
           <Route exact path="/" component={Home} />
+
+          <Route exact path="/textToSpeech" component={textToSpeech} />
+          <Route exact path="/speechToText" component={speechToText} />
+          <Route exact path="/textFromImage" component={textFromImage} />
+
           <Route exact path="/signup-page" render={() =>
             <Signup
               currentUser={this.state.currentUser}
