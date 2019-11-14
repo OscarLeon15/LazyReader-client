@@ -20,7 +20,18 @@ export default class Personal extends React.Component {
     render(){
         return(
             <div>
-                hello this is the personal profile page!!
+                <nav></nav>
+                <div>
+                    <div>
+                        <img src="" alt=""/>
+                    </div>
+                    <div>
+                        <div>
+                            <h2>current user name</h2>
+                        </div>
+                        <div>number of files</div>
+                    </div>
+                </div>
             </div>
         )
     }

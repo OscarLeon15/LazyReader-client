@@ -11,13 +11,14 @@ let test = ''
 
 export default class MyUploader extends React.Component {
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       file: null,
       src: [],
       str: [],
-      test: ''
+      
+      
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -55,7 +56,7 @@ export default class MyUploader extends React.Component {
         let options = {
           'method': 'GET',
           'hostname': 'api.ocr.space',
-          'path': `/parse/imageurl?apikey=86be69917788957&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
+          'path': `/parse/imageurl?${process.env.REACT_APP_OCR}&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
           'headers': {
             'apikey': '86be69917788957'
           }
@@ -110,7 +111,7 @@ export default class MyUploader extends React.Component {
         />
         {/* <Watson name={this.newString} /> */}
 
-
+        <p> hello  </p>
       </div>
     )
   }

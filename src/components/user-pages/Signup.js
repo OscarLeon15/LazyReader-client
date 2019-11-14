@@ -11,18 +11,19 @@ export default class Signup extends React.Component {
             fullName: "",
             email: "",
             password: "",
-            message: null
+            // message: null
         }
     }
 
     genericSync(event) {
-        console.log("what is: ", event.target.value)
+        // console.log("what is: ", event.target.value)
         const { name, value } = event.target;
         this.setState({ [name]: value });
     }
 
     handleSubmit(event) {
-        console.log("=====>" + this.state.fullName, this.state.email, this.state.password, this.state.message);
+        // console.log("=====>" + this.state.fullName, this.state.email, this.state.password, this.state.message);
+        console.log("=====>" + this.state.fullName, this.state.email, this.state.password);
         console.log("submitting form");
         event.preventDefault();
 
@@ -43,13 +44,17 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        console.log("Do I have user in Signup: ", this.props.currentUser)
+        // console.log("Do I have user in Signup: ", this.props.currentUser)
         const { fullName, email, password } = this.state;
-        console.log("STATE: ", this.state);
-        // if (this.props.currentUser) {
+        // console.log("STATE: ", this.state);        
+        // if (this.props.currentUser === '') {
         //     return (
-        //         <Redirect to="/login-page" />
+        //         // <Redirect to="/login-page" />
+        //         <Redirect to="/Personal" />
         //     )
+        // }else{
+        //     alert('Sorry that E-mail has already been used!')
+            // <Redirect to="/signup-page"/>
         // }
 
         return (

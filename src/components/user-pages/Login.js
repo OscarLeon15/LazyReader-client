@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import {BrowserRouter as Router, Redirect} from 'react-router-dom'
+import { Redirect} from 'react-router-dom'
+//BrowserRouter as Router,
 
 export default class Login extends React.Component {
     constructor() {
@@ -62,16 +63,20 @@ export default class Login extends React.Component {
 
     render() {
         const { email, password } = this.state
+        // if(currentUser){
+        //     return (
+        //         <Redirect to={`/home`}/>
+        //     )
+        // }
         if (this.props.currentUser) {
+
             return (
-                <Redirect to="/Personal" />
+                <Redirect to={"/Personal"} />
             )
         }
 
         return (
             <div>
-
-
 
                 <div className="columns is-centered">
                     <div className="column is-5-tablet is-4-desktop is-3-widescreen">
