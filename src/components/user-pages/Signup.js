@@ -31,7 +31,7 @@ export default class Signup extends React.Component {
         axios.post(
             // route we are hitting in the backend
             // `${process.env.REACT_APP_API_URL}/signup`,
-            "http://localhost:3001/api/signup",
+            "http://localhost:3005/api/signup",
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
