@@ -1,7 +1,6 @@
 import React from 'react'
 import logo from "../img/logo.svg"
 import { Switch, Route, NavLink } from "react-router-dom"
-// import CountriesList from "./components/CountriesList"
 import Home from '../components/Home'
 import Signup from "../components/user-pages/Signup"
 import Login from '../components/user-pages/Login'

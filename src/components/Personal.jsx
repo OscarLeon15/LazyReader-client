@@ -23,7 +23,7 @@ export default class Personal extends React.Component {
                 <nav></nav>
                 <div>
                     <div>
-                        <img src="" alt=""/>
+                        <img src="" alt="" className="avatarImg"/>
                     </div>
                     <div>
                         <div>
