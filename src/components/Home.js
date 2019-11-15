@@ -13,7 +13,7 @@ export default class Home extends React.Component {
 
                 <div className="hero is-primary is-bold is-widescreen is-fullheight">
                     <div className="container ">
-                        <h1 class="title has-text-centered">Try Our Awesome Conversion Tools!</h1>
+                        <h1 className="title has-text-centered">Try Our Awesome Conversion Tools!</h1>
                         <div className="columns">
                             <div className="column">
                                 <div className="card is-rounded">
@@ -22,7 +22,7 @@ export default class Home extends React.Component {
                                             Text -to- Speech
                                         </p>
                                         <i className="icon is-large">
-                                            <i class="fas fa-heading fa-3x"></i>
+                                            <i className="fas fa-heading fa-3x"></i>
                                         </i>
                                         <hr />
                                         <p className="subtitle">
@@ -49,7 +49,7 @@ export default class Home extends React.Component {
                                             Speech -to- Text
                                         </p>
                                         <i className="icon is-large">
-                                            <i class="far fa-comment-alt fa-3x"></i>
+                                            <i className="far fa-comment-alt fa-3x"></i>
                                         </i>
                                         <hr />
                                         <p className="subtitle">
@@ -75,7 +75,7 @@ export default class Home extends React.Component {
                                             Image -to- Text
                                         </p>
                                         <i className="icon is-large">
-                                            <i class="far fa-file-image fa-3x"></i>
+                                            <i className="far fa-file-image fa-3x"></i>
                                         </i>
                                         <hr />
                                         <p className="subtitle">
@@ -98,29 +98,29 @@ export default class Home extends React.Component {
                     </div>
 
                     <div className="container is-widescreen is-light">
-                        <nav class="level is-mobile">
-                            <div class="level-item has-text-centered">
+                        <nav className="level is-mobile">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Tweets</p>
-                                    <p class="title">3,456</p>
+                                    <p className="heading">Tweets</p>
+                                    <p className="title">3,456</p>
                                 </div>
                             </div>
-                            <div class="level-item has-text-centered">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Following</p>
-                                    <p class="title">123</p>
+                                    <p className="heading">Following</p>
+                                    <p className="title">123</p>
                                 </div>
                             </div>
-                            <div class="level-item has-text-centered">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Followers</p>
-                                    <p class="title">456K</p>
+                                    <p className="heading">Followers</p>
+                                    <p className="title">456K</p>
                                 </div>
                             </div>
-                            <div class="level-item has-text-centered">
+                            <div className="level-item has-text-centered">
                                 <div>
-                                    <p class="heading">Likes</p>
-                                    <p class="title">789</p>
+                                    <p className="heading">Likes</p>
+                                    <p className="title">789</p>
                                 </div>
                             </div>
                         </nav>

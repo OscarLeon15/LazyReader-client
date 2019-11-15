@@ -9,7 +9,7 @@ import textToSpeech from '../components/textToSpeech'
 import speechToText from '../components/speechToText'
 import textFromImage from '../components/textFromImage'
 
-import CountriesList from '../components/CountriesList'
+// import CountriesList from '../components/CountriesList'
 import axios from 'axios'
 
 
@@ -96,9 +96,17 @@ export default class Nav extends React.Component {
               onUserChange={userDoc => this.syncCurrentUSer(userDoc)}
             />
           } />
+
+          <Route exact path="/login-page" render={() =>
+            <Login
+              currentUser={this.state.currentUser}
+              onUserChange={userDoc => this.syncCurrentUSer(userDoc)}
+            />
+          } />
+
           {/* Login component */}
-          <Route exact path="/login-page" component={Login} />
-          <Route exact path="/bleh" component={CountriesList} />
+          {/* <Route exact path="/login-page" component={Login} />
+          <Route exact path="/bleh" component={CountriesList} /> */}
         </Switch>
 
       </div>

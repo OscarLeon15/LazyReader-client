@@ -11,6 +11,7 @@ import axios from 'axios'
 
 
 let test = ''
+console.log(test);
 
 export default class MyUploader extends React.Component {
 
