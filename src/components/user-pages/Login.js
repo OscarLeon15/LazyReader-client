@@ -27,7 +27,7 @@ export default class Login extends React.Component {
 
         axios.post(
             // route we are hitting in the backend
-            `${process.env.REACT_APP_API_URL}/login`,
+            `${process.env.REACT_APP_API_URL}/api/login`,
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
@@ -64,11 +64,15 @@ export default class Login extends React.Component {
 
     render() {
         const { email, password } = this.state
-        // if(currentUser){
+
+        // if (this.props.currentUser === null) {
+        //     console.log('please input information')
+        // }else if(this.props.currentUser === this.props.user._id){
         //     return (
-        //         <Redirect to={`/home`}/>
+        //         <Redirect to={"/personal"} />
         //     )
         // }
+
         if (this.props.currentUser) {
 
             return (

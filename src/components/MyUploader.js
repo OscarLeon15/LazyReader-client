@@ -5,24 +5,27 @@ import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 
 
-// HELP ===> Trying to get 'test' from line 68 out of scope... how??? Can't return or set state. Also tried setting global as below... 
+// HELP ===> Trying to get 'test' from line 68 out of scope... how???
+// Can't return or set state. Also tried setting global as below... 
 // After the OCR Api runs, 'test' contains the parsed text. Need to get this text to display on screen.
 
-
-
-let test = ''
-console.log(test);
-
 export default class MyUploader extends React.Component {
-
+  
   constructor(props) {
     super(props);
     this.state = {
       file: null,
+      cloudPic: null,
+      theWords: '',
+
     }
+    
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-
+  showMeTheTest = (theString) => {
+    this.setState({theWords: theString})
+  }
+  
   // specify upload params and url for your files
   getUploadParams = ({ meta }) => { return { url: 'https://httpbin.org/post' } }
 
@@ -31,7 +34,7 @@ export default class MyUploader extends React.Component {
     this.setState({
       file: file
     })
-    console.log(status, meta, file);
+    // console.log(status, meta, file);
   }
 
   // receives array of files that are done uploading when submit button is clicked
@@ -43,39 +46,43 @@ export default class MyUploader extends React.Component {
     let formData = new FormData();
     formData.append('theImage', this.state.file)
     // console.log("THIS STATE FILE=====>>>" + this.state.file)
+    
+    axios.post(`${process.env.REACT_APP_API_URL}/testing`, formData, { withCredentials: true })
+    .then(responseFromTheBackend => {
+      
+      // responseFromTheBackend.data is the image url
+      console.log(responseFromTheBackend.data)
+      console.log('this is the response from cliudinary...........')
+      console.log(responseFromTheBackend)
+      
+      // Example API Request -----------------------------
+      let https = require('https');
+      
+      let options = {
+        'method': 'GET',
+        'hostname': 'api.ocr.space',
+        'path': `/parse/imageurl?${process.env.REACT_APP_OCR}&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
+        'headers': {
+          'apikey': '86be69917788957'
+        }
+      };
+      console.log(options, 'this is just the options')
+      console.log(options.path, 'this is the options path')
+      console.log(options.path.parseText, 'this is the options path')
+      let that = this;
+      let req = https.request(options, function (res) {
+        let chunks = [];
+        // console.log("what is this herererrerer: ", that)
 
-    axios.post(`${process.env.REACT_APP_API_URL}/testing`, { withCredentials: true }, formData)
-      .then(responseFromTheBackend => {
-
-        // responseFromTheBackend.data is the image url
-        console.log(responseFromTheBackend.data)
-
-        // Example API Request -----------------------------
-        let https = require('https');
-
-        let options = {
-          'method': 'GET',
-          'hostname': 'api.ocr.space',
-          'path': `/parse/imageurl?${process.env.REACT_APP_OCR}&url=${responseFromTheBackend.data}&isOverlayRequired=false`,
-          'headers': {
-            'apikey': '86be69917788957'
-          }
-        };
-
-        let req = https.request(options, function (res) {
-          let chunks = [];
-
-          res.on("data", function (chunk) {
+          res.on("data",  (chunk) => {
             chunks.push(chunk);
           });
+          res.on("end", (chunk) => {
+            let body = Buffer.concat(chunks);        
+            that.showMeTheTest(body.toString().split(":")[8])
+           });
 
-          res.on("end", function (chunk) {
-            let body = Buffer.concat(chunks);
-            test = body.toString()
-            // console.log(body.toString());
-          });
-
-          res.on("error", function (error) {
+          res.on("error", (error) => {
             console.error(error);
           });
 
@@ -98,15 +105,21 @@ export default class MyUploader extends React.Component {
 
 
   render() {
+
+//     let test = ''
+// console.log(test)
+
     return (
       <div className="container">
         {/* <img src={file} alt="file icon" /> */}
+        
         <Dropzone
           getUploadParams={this.getUploadParams}
           onChangeStatus={this.handleChangeStatus}
           onSubmit={this.handleSubmit}
           accept=".png, .jpg, .jpeg, .pdf"
         />
+        <h1>{this.state.theWords}</h1>
       </div>
     )
   }
