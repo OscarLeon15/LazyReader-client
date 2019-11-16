@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Redirect } from 'react-router-dom'
+// import { Redirect } from 'react-router-dom'
 //BrowserRouter as Router,
 
 export default class Login extends React.Component {
@@ -26,7 +26,7 @@ export default class Login extends React.Component {
 
         axios.post(
             // route we are hitting in the backend
-            `${process.env.REACT_APP_API_URL}/login`,
+            `${process.env.REACT_APP_API_URL}/api/login`,
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending

@@ -19,6 +19,7 @@ export default class MyUploader extends React.Component {
     super(props);
     this.state = {
       file: null,
+      cloudPic: null,
     }
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -31,7 +32,7 @@ export default class MyUploader extends React.Component {
     this.setState({
       file: file
     })
-    console.log(status, meta, file);
+    // console.log(status, meta, file);
   }
 
   // receives array of files that are done uploading when submit button is clicked
@@ -44,12 +45,14 @@ export default class MyUploader extends React.Component {
     formData.append('theImage', this.state.file)
     // console.log("THIS STATE FILE=====>>>" + this.state.file)
 
-    axios.post(`${process.env.REACT_APP_API_URL}/testing`, { withCredentials: true }, formData)
+    axios.post(`${process.env.REACT_APP_API_URL}/testing`, formData, { withCredentials: true })
       .then(responseFromTheBackend => {
 
         // responseFromTheBackend.data is the image url
         console.log(responseFromTheBackend.data)
-
+        console.log('this is the response from cliudinary...........')
+        console.log(responseFromTheBackend)
+        
         // Example API Request -----------------------------
         let https = require('https');
 
@@ -73,7 +76,7 @@ export default class MyUploader extends React.Component {
             let body = Buffer.concat(chunks);
             let test = body.toString()
             console.log(test)
-            console.log(body.toString());
+            // console.log(body.toString());
           });
 
           res.on("error", function (error) {

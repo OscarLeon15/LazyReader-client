@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Redirect } from 'react-router-dom'
+// import { BrowserRouter as Router, Redirect } from 'react-router-dom'
 
 
 
@@ -11,7 +11,7 @@ export default class Signup extends React.Component {
             fullName: "",
             email: "",
             password: "",
-            // message: null
+            message: null
         }
     }
 
@@ -29,7 +29,7 @@ export default class Signup extends React.Component {
 
         axios.post(
             // route we are hitting in the backend
-            `${process.env.REACT_APP_API_URL}/signup`,
+            `${process.env.REACT_APP_API_URL}/api/signup`,
             // the data from the form (AKA req.body 🚀) that we are sending to this route to do the job
             this.state,
             // secure sending
