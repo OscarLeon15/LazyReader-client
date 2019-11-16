@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-// import { Redirect } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
+import Dashboard from '../Dashboard';
 //BrowserRouter as Router,
 
 export default class Login extends React.Component {
@@ -33,9 +34,9 @@ export default class Login extends React.Component {
             { withCredentials: true }
         )
             .then(responseFromServer => {
-                // console.log("response is:", responseFromServer);
+                console.log("response is:", responseFromServer);
                 const { userDoc } = responseFromServer.data;
-                // this.props.onUserChange(userDoc);
+                this.props.onUserChange(userDoc);
                 alert("You are logged in.")
             })
             .catch((error) => {
@@ -71,6 +72,13 @@ export default class Login extends React.Component {
         //         <Redirect to={"/personal"} />
         //     )
         // }
+
+        if (this.props.currentUser) {
+
+            return (
+                <Redirect to={Dashboard} />
+            )
+        }
 
         return (
             <div>

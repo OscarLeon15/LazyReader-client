@@ -9,10 +9,6 @@ import axios from 'axios'
 // Can't return or set state. Also tried setting global as below... 
 // After the OCR Api runs, 'test' contains the parsed text. Need to get this text to display on screen.
 
-
-
-
-
 export default class MyUploader extends React.Component {
 
   constructor(props) {

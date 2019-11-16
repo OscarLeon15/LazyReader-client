@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 // import { BrowserRouter as Router, Redirect } from 'react-router-dom'
+// import Dashboard from "../Dashboard";
 
 
 
@@ -44,18 +45,22 @@ export default class Signup extends React.Component {
     }
 
     render() {
-        // console.log("Do I have user in Signup: ", this.props.currentUser)
+        console.log("Do I have user in Signup: ", this.props.currentUser)
         const { fullName, email, password } = this.state;
-        // console.log("STATE: ", this.state);        
-        // if (this.props.currentUser === '') {
-        //     return (
-        //         // <Redirect to="/login-page" />
-        //         <Redirect to="/Personal" />
-        //     )
-        // }else{
-        //     alert('Sorry that E-mail has already been used!')
-        // <Redirect to="/signup-page"/>
-        // }
+        console.log("STATE: ", this.state);
+        if (this.props.currentUser) {
+            return (
+                <div>
+                    <h2> Welcome to your app, {this.props.currentUser.fullName} ! You're signed in! </h2>
+                </div>
+                //         // <Redirect to="/login-page" />
+                //         <Redirect to={Dashboard} />
+                // } else {
+                //     // alert('Sorry that E-mail has already been used!')
+                //     <Redirect to={Signup} />
+                // }
+            )
+        }
 
         return (
             <div className="columns is-centered">
@@ -130,11 +135,11 @@ export default class Signup extends React.Component {
                                         <p className="control">
                                             <button className="button is-primary">
                                                 Sign Up
-                                </button>
+                                            </button>
                                         </p>
                                     </div>
-
                                 </form>
+                                {/* if the message is not null (basically if there's a message) then show it in this <div> tag */}
                                 {this.state.message && <div> {this.state.message} </div>}
                             </div>
                         </div>
