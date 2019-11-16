@@ -65,20 +65,20 @@ export default class Login extends React.Component {
     render() {
         const { email, password } = this.state
 
-        // if (this.props.currentUser === null) {
-        //     console.log('please input information')
-        // }else if(this.props.currentUser === this.props.user._id){
-        //     return (
-        //         <Redirect to={"/personal"} />
-        //     )
-        // }
-
-        if (this.props.currentUser) {
-
+        if (this.props.currentUser === null) {
+            console.log('please input information')
+        }else if(this.props.currentUser ){
             return (
-                <Redirect to={Dashboard} />
+                <Redirect to={`/personal`} />
             )
         }
+
+        // if (this.props.currentUser) {
+
+        //     return (
+        //         <Redirect to={Dashboard} />
+        //     )
+        // }
 
         return (
             <div>

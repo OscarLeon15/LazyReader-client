@@ -7,6 +7,7 @@ import Login from '../components/user-pages/Login'
 import textToSpeech from '../components/textToSpeech'
 import speechToText from '../components/speechToText'
 import textFromImage from '../components/textFromImage'
+import Dashboard from '../components/Dashboard';
 
 import CountriesList from '../components/CountriesList'
 import axios from 'axios'
@@ -108,7 +109,7 @@ export default class Nav extends React.Component {
           <Route exact path="/login-page" component={Login} />
           <Route exact path="/bleh" component={CountriesList} />
           <Route exact path="/personal" component={Personal} />
-          
+          <Route exact path="/dashboard" render={props => <Dashboard {...props} theUser={this.state.currentUser}/>} />
         </Switch>
 
       </div>
