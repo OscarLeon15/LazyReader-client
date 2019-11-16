@@ -46,7 +46,9 @@ export default class WatsonSpeechToText extends React.Component {
 }
 
 
-// !!! HELP===> Below is the info from a file called 'server.js' - in the example, this sits in the root of the front end - assuming this is because the example did not have a separate backed - so need to add these configs to our backe end
+// !!! HELP===> Below is the info from a file called 'server.js' - in the example, 
+//this sits in the root of the front end - assuming this is because the example did not 
+//have a separate backed - so need to add these configs to our backe end
 // ------------------------------
 
 // 'use strict';

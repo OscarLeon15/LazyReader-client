@@ -86,7 +86,7 @@ export default class Home extends React.Component {
                                     <footer className="card-footer">
                                         <p className="card-footer-item">
                                             <span>
-                                                <NavLink to="/imageToText">
+                                                <NavLink to="/textFromImage">
                                                     Convert Image-to-Text
                                     </NavLink>
                                             </span>

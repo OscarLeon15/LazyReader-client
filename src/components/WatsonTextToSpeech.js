@@ -6,9 +6,12 @@ import 'whatwg-fetch'
 import voices from '../voices'
 
 
-// !!!! HELP ===> Took this code exactly from Watson example. Some reason getting an error that 'text' is not defined, so added it below. When I remove it, the whole app crashes... adding it also does not fix all the problems but at least UI shows up - its a start.
-let text
+// !!!! HELP ===> Took this code exactly from Watson example.
+// Some reason getting an error that 'text' is not defined, so added it below.
+// When I remove it, the whole app crashes... adding it also does not fix all the problems
+// but at least UI shows up - its a start.
 
+let text;
 
 
 

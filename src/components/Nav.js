@@ -10,14 +10,15 @@ import textFromImage from '../components/textFromImage'
 
 import CountriesList from '../components/CountriesList'
 import axios from 'axios'
-
+import Personal from '../components/Personal'
 
 export default class Nav extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      
     }
   }
 
@@ -98,6 +99,7 @@ export default class Nav extends React.Component {
           {/* Login component */}
           <Route exact path="/login-page" component={Login} />
           <Route exact path="/bleh" component={CountriesList} />
+          <Route exact path="/personal" component={Personal} />
         </Switch>
 
       </div>

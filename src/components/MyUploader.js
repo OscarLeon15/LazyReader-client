@@ -5,12 +5,13 @@ import Dropzone from 'react-dropzone-uploader'
 import axios from 'axios'
 
 
-// HELP ===> Trying to get 'test' from line 68 out of scope... how??? Can't return or set state. Also tried setting global as below... 
+// HELP ===> Trying to get 'test' from line 68 out of scope... how???
+// Can't return or set state. Also tried setting global as below... 
 // After the OCR Api runs, 'test' contains the parsed text. Need to get this text to display on screen.
 
 
 
-let test = ''
+
 
 export default class MyUploader extends React.Component {
 
@@ -70,8 +71,9 @@ export default class MyUploader extends React.Component {
 
           res.on("end", function (chunk) {
             let body = Buffer.concat(chunks);
-            test = body.toString()
-            // console.log(body.toString());
+            let test = body.toString()
+            console.log(test)
+            console.log(body.toString());
           });
 
           res.on("error", function (error) {
@@ -97,6 +99,10 @@ export default class MyUploader extends React.Component {
 
 
   render() {
+
+//     let test = ''
+// console.log(test)
+
     return (
       <div className="container">
         {/* <img src={file} alt="file icon" /> */}
