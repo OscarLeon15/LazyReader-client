@@ -53,7 +53,7 @@ export default class Home extends React.Component {
                                         </i>
                                         <hr />
                                         <p className="subtitle">
-                                            Enable your browser's microphone, speak your content, receive a text file.
+                                            Speak into your browser's microphone, receive a text file.
                                         </p>
                                     </div>
                                     <footer className="card-footer">
