@@ -1,24 +1,25 @@
 import React from 'react'
 import logo from "../img/logo.svg"
 import { Switch, Route, NavLink } from "react-router-dom"
-// import CountriesList from "./components/CountriesList"
 import Home from '../components/Home'
 import Signup from "../components/user-pages/Signup"
 import Login from '../components/user-pages/Login'
 import textToSpeech from '../components/textToSpeech'
 import speechToText from '../components/speechToText'
 import textFromImage from '../components/textFromImage'
+import Dashboard from '../components/Dashboard';
 
-// import CountriesList from '../components/CountriesList'
+import CountriesList from '../components/CountriesList'
 import axios from 'axios'
-
+import Personal from '../components/Personal'
 
 export default class Nav extends React.Component {
 
   constructor() {
     super();
     this.state = {
-      currentUser: null
+      currentUser: null,
+      
     }
   }
 
@@ -105,8 +106,10 @@ export default class Nav extends React.Component {
           } />
 
           {/* Login component */}
-          {/* <Route exact path="/login-page" component={Login} />
-          <Route exact path="/bleh" component={CountriesList} /> */}
+          <Route exact path="/login-page" component={Login} />
+          <Route exact path="/bleh" component={CountriesList} />
+          <Route exact path="/personal" component={Personal} />
+          <Route exact path="/dashboard" render={props => <Dashboard {...props} theUser={this.state.currentUser}/>} />
         </Switch>
 
       </div>
