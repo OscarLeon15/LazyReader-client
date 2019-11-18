@@ -16,14 +16,27 @@ export default class MyUploader extends React.Component {
     this.state = {
       file: null,
       cloudPic: null,
-      theWords: '',
+      ocrParsedText: '',
 
     }
     
     this.handleSubmit = this.handleSubmit.bind(this)
   }
   showMeTheTest = (theString) => {
-    this.setState({theWords: theString})
+    let savedText;
+    this.setState({ocrParsedText: theString}, () => {
+       savedText = this.state.ocrParsedText
+    })
+
+    axios.post(`${REACT_APP_API_URL}/personal`, { savedText }, { withCredentials:true })
+    .then(responseFromServer => {
+      console.log("personal response is:", responseFromServer);
+      // const { userDoc } = responseFromServer.data;
+      // this.props.onUserChange(userDoc);
+  })
+  .catch(err => console.log("Err in signup: ", err));
+
+    console.log(savedText)
   }
   
   // specify upload params and url for your files
@@ -52,7 +65,7 @@ export default class MyUploader extends React.Component {
       
       // responseFromTheBackend.data is the image url
       console.log(responseFromTheBackend.data)
-      console.log('this is the response from cliudinary...........')
+      console.log('this is the response from claudinary...........')
       console.log(responseFromTheBackend)
       
       // Example API Request -----------------------------
@@ -68,7 +81,7 @@ export default class MyUploader extends React.Component {
       };
       console.log(options, 'this is just the options')
       console.log(options.path, 'this is the options path')
-      console.log(options.path.parseText, 'this is the options path')
+      console.log(options.path.parseText, 'this is the options path parsed text')
       let that = this;
       let req = https.request(options, function (res) {
         let chunks = [];
@@ -78,7 +91,7 @@ export default class MyUploader extends React.Component {
             chunks.push(chunk);
           });
           res.on("end", (chunk) => {
-            let body = Buffer.concat(chunks);        
+            let body = Buffer.concat(chunks);   
             that.showMeTheTest(body.toString().split(":")[8])
            });
 
@@ -119,7 +132,7 @@ export default class MyUploader extends React.Component {
           onSubmit={this.handleSubmit}
           accept=".png, .jpg, .jpeg, .pdf"
         />
-        <h1>{this.state.theWords}</h1>
+        <h1 className="fileText">{this.state.ocrParsedText}</h1>
       </div>
     )
   }
