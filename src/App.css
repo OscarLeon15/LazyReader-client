@@ -39,6 +39,9 @@ body {
 .card-footer-item {
   background: navajowhite;
 }
+.fileText{
+  background-color: lightgreen ;
+}
 
 /* ------------------*/
 /* Microphone

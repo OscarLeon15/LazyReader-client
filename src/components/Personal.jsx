@@ -1,4 +1,6 @@
 import React from "react";
+import MyUploader from "../components/MyUploader"
+
 // import axios from "axios";
 
 
@@ -23,11 +25,23 @@ export default class Personal extends React.Component {
                 <nav></nav>
                 <div>
                     <div>
-                        <img src="" alt="" className="avatarImg"/>
+                        {/* <img src="" alt=""/> */}
+                        {/* <img src={`${this.props.responseFromTheBackend.data}`} alt="" className="avatarImg"/> */}
                     </div>
                     <div>
                         <div>
-                            <h2>current user name</h2>
+                            
+                            <h2>current user name:  </h2>
+                            {/* <h2>current user name: {this.props.currentUser.fullName} </h2> */}
+                            <MyUploader />
+                            <h1 className="fileText">{this.props.ocrParsedText}</h1>
+                            <div>
+                                <h2> File Name </h2>
+                                <div className="fileText">
+
+                                </div>
+                            </div>
+
                         </div>
                         <div>number of files</div>
                     </div>

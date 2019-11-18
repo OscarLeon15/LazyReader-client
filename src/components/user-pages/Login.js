@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom'
-import Dashboard from '../Dashboard';
+// import Dashboard from '../Dashboard';
 //BrowserRouter as Router,
 
 export default class Login extends React.Component {
@@ -69,7 +69,7 @@ export default class Login extends React.Component {
             console.log('please input information')
         }else if(this.props.currentUser ){
             return (
-                <Redirect to={`/personal`} />
+                <Redirect key={this.props.currentUser.id} to={`/personal/${this.props.currentUser.id}`} />
             )
         }
 
