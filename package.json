@@ -21,7 +21,7 @@
     "react-dropzone-uploader": "^2.10.2",
     "react-player": "^1.14.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "^3.2.0",
+    "react-scripts": "^5.0.1",
     "vcap_services": "^0.7.1",
     "watson-developer-cloud": "^4.0.1",
     "watson-react-components": "^0.6.19",
